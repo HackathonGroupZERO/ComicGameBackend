@@ -353,8 +353,8 @@ Example failure:
 `POST 'photos/create'`
 
 Params:
-  * none
-* Removes validated users' post
+  * image_url:string
+  * Removes validated users' post
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
