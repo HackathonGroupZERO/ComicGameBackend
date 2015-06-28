@@ -149,10 +149,25 @@ Example success:
 ```json
 [
   {
+    "id": 3,
+    "comic_info": {
+      "comic_url": "www.madeupurl.com",
+      "title": "Last Issue",
+      "user_id": 2,
+      "created_at": "2015-06-28T10:37:01.485Z",
+      "updated_at": "2015-06-28T10:37:01.485Z"
+    },
+    "creator": {
+      "username": "jkrowling1234",
+      "email": "jkroweling@tiy.com"
+    }
+  },
+  {
     "id": 2,
     "comic_info": {
-      "comic_url": "www.google.com/image",
+      "comic_url": "www.madeupurl.com",
       "title": "Zero Issue",
+      "user_id": 1,
       "created_at": "2015-06-27T23:18:40.137Z",
       "updated_at": "2015-06-27T23:18:40.137Z"
     },
@@ -164,14 +179,15 @@ Example success:
   {
     "id": 1,
     "comic_info": {
-      "comic_url": "www.madeupurl.com/image",
-      "title": "Comic Book",
+      "comic_url": "www.madeupurl.com",
+      "title": "First Issue",
+      "user_id": 1,
       "created_at": "2015-06-27T23:14:48.600Z",
       "updated_at": "2015-06-27T23:14:48.600Z"
     },
     "creator": {
-      "username": "bwillis1234",
-      "email": "bwillis@tiy.com"
+      "username": "jsmith1234",
+      "email": "jsmith@tiy.com"
     }
   }
 ]
