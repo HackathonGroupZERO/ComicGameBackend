@@ -20,7 +20,7 @@ __ruby 2.1.5p273__
 `GET'/comic/title'`
 * [Create Comic](#create-comic)
 `POST '/comics/create'`
-* [Get All Of User's Comics](#get-all-of-user's-comics)
+* [Get All Of A User's Comics](#get-all-of-a-user's-comics)
 `GET 'comics/user'`
 
 ### **Photos**
@@ -214,8 +214,9 @@ Example success:
 {
   "id": 1,
   "comic_info": {
-    "comic_url": "www.madeupurl.com/image",
-    "title": "Zero Issue",
+    "comic_url": "www.madeupurl.com",
+    "title": "zero issue",
+    "user_id": 1,
     "created_at": "2015-06-27T23:14:48.600Z",
     "updated_at": "2015-06-27T23:14:48.600Z"
   },
@@ -236,8 +237,8 @@ Example failure:
 POST '/comics/create'
 
 Params:
-  * none
-* Returns a single post
+  * comic_url
+  * title
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
@@ -245,12 +246,13 @@ Response:
 Example success:  
 ```json
 {
-  "id": 3,
+  "id": 4,
   "comic_info": {
-    "comic_url": "www.madeupurl.com/image",
+    "comic_url": "www.madeupurl.com",
     "title": "First Issue",
-    "created_at": "2015-06-28T10:37:01.485Z",
-    "updated_at": "2015-06-28T10:37:01.485Z"
+    "user_id": 1,
+    "created_at": "2015-06-28T11:36:09.556Z",
+    "updated_at": "2015-06-28T11:36:09.556Z"
   },
   "creator": {
     "username": "jsmith1234",
@@ -265,13 +267,13 @@ Example failure:
 
 
 
-### **Get All Of User's Comics**
+### **Get All Of A User's Comics**
 
 `GET 'comics/user'`
 
 Params:
   * none
-* Retrieves all of a user's comics.
+  * Retrieves all of a user's comics.
 
 
 
@@ -282,10 +284,25 @@ Example success:
 ```json
 [
   {
+    "id": 4,
+    "comic_info": {
+      "comic_url": "www.madeupurl.com",
+      "title": "First Issue",
+      "user_id": 1,
+      "created_at": "2015-06-28T11:36:09.556Z",
+      "updated_at": "2015-06-28T11:36:09.556Z"
+    },
+    "creator": {
+      "username": "jsmith1234",
+      "email": "jsmith@tiy.com"
+    }
+  },
+  {
     "id": 3,
     "comic_info": {
-      "comic_url": "www.madeupurl.com/image3",
-      "title": "First Issue",
+      "comic_url": "www.madeupurl.com",
+      "title": "Last Issue",
+      "user_id": 1,
       "created_at": "2015-06-28T10:37:01.485Z",
       "updated_at": "2015-06-28T10:37:01.485Z"
     },
@@ -297,8 +314,9 @@ Example success:
   {
     "id": 2,
     "comic_info": {
-      "comic_url": "www.madeupurl.com/image2",
-      "title": "Zero Issue",
+      "comic_url": "www.madeupurl.com",
+      "title": "Second Issue",
+      "user_id": 1,
       "created_at": "2015-06-27T23:18:40.137Z",
       "updated_at": "2015-06-27T23:18:40.137Z"
     },
@@ -311,7 +329,8 @@ Example success:
     "id": 1,
     "comic_info": {
       "comic_url": "www.madeupurl.com",
-      "title": "Last Issue",
+      "title": "Third Issue",
+      "user_id": 1,
       "created_at": "2015-06-27T23:14:48.600Z",
       "updated_at": "2015-06-27T23:14:48.600Z"
     },
