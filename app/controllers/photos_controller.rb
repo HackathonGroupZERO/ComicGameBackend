@@ -3,8 +3,8 @@ class PhotosController < ApplicationController
 
   def create
 
-    @photo = Photo.create( image_url: params[:image_url])
-    if @photo
+    @photo = current_user.photos.new(image_url: params[:image_url])
+    if @photo.save
       render 'create.json.jbuilder', status: :created
     else
     render json: { errors: @photo.errors.full_messages },
@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
     if @photos.any?
       render 'all.json.jbuilder', status: :ok
     else
-      render json: { message: "There are no photos." },
+      render json: { message: "No photos exist" },
         status: :not_found
     end
   end
