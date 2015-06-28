@@ -433,7 +433,7 @@ Example failure:
 
 Params:
   * :id
-  * Allows user to select a single photo from a user by photo id.
+  * Allows user to select a single photo from a user by photo id
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
