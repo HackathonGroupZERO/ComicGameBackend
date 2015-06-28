@@ -13,6 +13,8 @@
 json.photo_info do
 	json.photo photo.id
 	json.image_url photo.image_url
+  json.comic_id photo.comic_id
+  json.user_id photo.user_id
 end
 
 json.creator do
