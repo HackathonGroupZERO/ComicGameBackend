@@ -9,9 +9,9 @@ class UsersController < ApplicationController
 
   def register
     passhash = Digest::SHA1.hexdigest(params[:password])
-  
-    @user = User.new(email: params[:email],
-                     password: passhash,
+
+    @user = User.new(password: passhash,
+                     email: params[:email],
                      username: params[:username])
     if @user.save
       # render json "register.json.jbuilder", status: :created
