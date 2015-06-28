@@ -16,21 +16,21 @@ __ruby 2.1.5p273__
 ### **Comics**
 * [Get All Comics](#get-all-comics)
 `GET '/comics'`
-* [Show Comic](#show-Comic)
+* [Show Comic](#show-comic)
 `GET'/comic/title'`
 * [Create Comic](#create-comic)
 `POST '/comics/create'`
-* [Get All Of A User's Comics](#get-all-of-a-user's-comics)
+* [Get All Of A Users Comics](#get-all-of-a-users-comics)
 `GET 'comics/user'`
 
 ### **Photos**
 * [Create Photo](#create-photo)
 `POST 'photos/create'`
-* [Get A User's Photos](#get-a-user's-photos)
+* [Get A Users Photos](#get-a-users-photos)
 `GET 'photos/user'`
-* [Get A User's Photo](#get-a-user's-photo)
+* [Get A Users Photo](#get-a-users-photo)
 `GET 'photo/:id'`
-* [Get All Photos From All Users](#get-all-users'-photos)
+* [Get All Photos From All Users](#get-all-users-photos)
 `GET 'photos/users'`
 
 
