@@ -30,7 +30,7 @@ __ruby 2.1.5p273__
 `GET 'photos/user'`
 * [Get A User Photo](#get-a-user-photo)
 `GET 'photo/:id'`
-* [Get All Users' Photos](#get-all-users'-photos)
+* [Get All Photos From All Users](#get-all-users'-photos)
 `GET 'photos/users'`
 
 
@@ -147,10 +147,34 @@ Response:
 
 Example success:  
 ```json
-{ "user":{"id":2,
-  "username":"JDrama2000",
-  "points":20 }}
-
+[
+  {
+    "id": 2,
+    "comic_info": {
+      "comic_url": "www.google.com/image",
+      "title": "Zero Issue",
+      "created_at": "2015-06-27T23:18:40.137Z",
+      "updated_at": "2015-06-27T23:18:40.137Z"
+    },
+    "creator": {
+      "username": "jsmith1234",
+      "email": "jsmith@tiy.com"
+    }
+  },
+  {
+    "id": 1,
+    "comic_info": {
+      "comic_url": "www.madeupurl.com/image",
+      "title": "Comic Book",
+      "created_at": "2015-06-27T23:14:48.600Z",
+      "updated_at": "2015-06-27T23:14:48.600Z"
+    },
+    "creator": {
+      "username": "bwillis1234",
+      "email": "bwillis@tiy.com"
+    }
+  }
+]
 ```
 Example failure:
 ```json
@@ -162,7 +186,7 @@ Example failure:
 `GET 'comic/title'`
 
 Params:
-  * none
+  * id
   * Returns the selected comic.
 
 
@@ -172,43 +196,22 @@ Response:
 Example success:  
 ```json
 {
-  "post": [
-    {
-    },
-    {
-      "image": "www.photos.com/photos4",
-      "user_id": 4,
-      "answer": "answer",
-
-      "image": "www.photo.com/photo",
-      "user_id": 1,
-      "answer": 1,
-      "complete": false
-    },
-    {
-      "image": "www.photo.com/photo",
-      "user_id": 2,
-      "answer": 1,
-      "complete": false
-    },
-    {
-      "image": "www.photo.com/photo",
-      "user_id": 3,
-      "answer": 1,
-      "complete": false
-    },
-    {
-      "image": "www.photo.com/photo",
-      "user_id": 4,
-      "answer": 1,
-      "complete": false
-    }
-  ]
+  "id": 1,
+  "comic_info": {
+    "comic_url": "www.madeupurl.com/image",
+    "title": "Zero Issue",
+    "created_at": "2015-06-27T23:14:48.600Z",
+    "updated_at": "2015-06-27T23:14:48.600Z"
+  },
+  "creator": {
+    "username": "jsmith1234",
+    "email": "jsmith@tiy.com"
+  }
 }
 ```
 Example failure:
 ```json
-  {"errors": ["errors":["Error when loading posts"]]}
+  {"errors": ["errors":["Error when loading comic"]]}
 ```
 
 
@@ -225,13 +228,19 @@ Response:
 
 Example success:  
 ```json
-{ "post":{"image":"image file",
-  "user_id":3,
-  "answer":"correct answer",
-  "complete":false,
-  "answer_1":"incorrect answer",
-  "answer_2":"incorrect answer",
-  "answer_3":"incorrect answer"}}
+{
+  "id": 3,
+  "comic_info": {
+    "comic_url": "www.madeupurl.com/image",
+    "title": "First Issue",
+    "created_at": "2015-06-28T10:37:01.485Z",
+    "updated_at": "2015-06-28T10:37:01.485Z"
+  },
+  "creator": {
+    "username": "jsmith1234",
+    "email": "jsmith@tiy.com"
+  }
+}
 ```
 Example failure:
 ```json
@@ -246,7 +255,7 @@ Example failure:
 
 Params:
   * none
-* Retrieves all of a user's commics.
+* Retrieves all of a user's comics.
 
 
 
@@ -255,14 +264,47 @@ Response:
 
 Example success:  
 ```json
-{ "post":{"id":6,
-  "image":"null",
-  "user_id":3,
-  "answer":"correct",
-  "complete":false,
-  "answer_1":"incorrect",
-  "answer_2":"incorrect",
-  "answer_3":"incorrect"}}
+[
+  {
+    "id": 3,
+    "comic_info": {
+      "comic_url": "www.madeupurl.com/image3",
+      "title": "First Issue",
+      "created_at": "2015-06-28T10:37:01.485Z",
+      "updated_at": "2015-06-28T10:37:01.485Z"
+    },
+    "creator": {
+      "username": "jsmith1234",
+      "email": "jsmith@tiy.com"
+    }
+  },
+  {
+    "id": 2,
+    "comic_info": {
+      "comic_url": "www.madeupurl.com/image2",
+      "title": "Zero Issue",
+      "created_at": "2015-06-27T23:18:40.137Z",
+      "updated_at": "2015-06-27T23:18:40.137Z"
+    },
+    "creator": {
+      "username": "jsmith1234",
+      "email": "jsmith@tiy.com"
+    }
+  },
+  {
+    "id": 1,
+    "comic_info": {
+      "comic_url": "www.madeupurl.com",
+      "title": "Last Issue",
+      "created_at": "2015-06-27T23:14:48.600Z",
+      "updated_at": "2015-06-27T23:14:48.600Z"
+    },
+    "creator": {
+      "username": "jsmith1234",
+      "email": "jsmith@tiy.com"
+    }
+  }
+]
 ```
 Example failure:
 ```json
@@ -340,24 +382,32 @@ Example failure:
 ```json
 { "message":"Access Token Not Found" }
 ```
-### **Get All Users' Photos**
+### **Get All Photos From All Users**
 
 `GET 'photos/users'`
 
 Params:
-  * guess: "strings"
+  * none
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
 Example success:  
 ```json
-{ "user":{"id":2,
-  "guess":"A",
-  "point":1,
-  "user_id":3,
-  "post_id":6,
-  "access_token":"25a0eea82cd2fd34c34ddadc2447fb92"}}
+[
+  {
+    "photo_info": {
+      "photo": 2,
+      "image_url": "www.google.com/image"
+    }
+  },
+  {
+    "photo_info": {
+      "photo": 1,
+      "image_url": "www.google.com/image"
+    }
+  }
+]
 ```
 Example failure:
 ```json
