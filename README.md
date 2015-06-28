@@ -26,9 +26,9 @@ __ruby 2.1.5p273__
 ### **Photos**
 * [Create Photo](#create-photo)
 `POST 'photos/create'`
-* [Get User Photos](#get-user-photos)
+* [Get A User's Photos](#get-a-user's-photos)
 `GET 'photos/user'`
-* [Get A User Photo](#get-a-user-photo)
+* [Get A User's Photo](#get-a-user's-photo)
 `GET 'photo/:id'`
 * [Get All Photos From All Users](#get-all-users'-photos)
 `GET 'photos/users'`
@@ -326,61 +326,97 @@ Response:
 
 Example success:  
 ```json
-{"message":"Post deleted"}
-```
+{
+  "photo_info": {
+    "photo": 8,
+    "image_url": "www.google.com/image",
+    "comic_id": null,
+    "user_id": 1
+  }
+}```
 Example failure:
 ```json
 { "message":"ERROR" }
 ```
 
 
-
-### **Get User Photos**
+### **Get A User's Photos**
 
 `GET 'photos/user'`
 
 Params:
-  * guess: "string"
+  * Retrieve photos by user
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
 Example success:  
 ```json
-{ "user":{"id":2,
-  "guess":"A",
-  "point":1,
-  "user_id":3,
-  "post_id":6,
-  "access_token":"25a0eea82cd2fd34c34ddadc2447fb92"}}
+[
+  {
+    "photo_info": {
+      "photo": 8,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 1
+    }
+  },
+  {
+    "photo_info": {
+      "photo": 7,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 1
+    }
+  },
+  {
+    "photo_info": {
+      "photo": 6,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 1
+    }
+  },
+  {
+    "photo_info": {
+      "photo": 2,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 1
+    }
+  }
+]
 ```
 Example failure:
 ```json
-{ "message":"Access Token Not Found" }
+{ "message":"User Does Not Have Any Photos" }
 ```
 
-### **Get A User Photo**
+### **Get A User's Photo**
 
 `GET 'photo/:id'`
 
 Params:
-  * guess: "string"
+  * :id
+  * Allows user to select a single photo from a user by photo id.
 
 Response:
   Status Code: 201 if successful, 422 if unsuccessful
 
 Example success:  
 ```json
-{ "user":{"id":2,
-  "guess":"A",
-  "point":1,
-  "user_id":3,
-  "post_id":6,
-  "access_token":"25a0eea82cd2fd34c34ddadc2447fb92"}}
+{
+  "photo_info": {
+    "photo": 2,
+    "image_url": "www.google.com/image",
+    "comic_id": null,
+    "user_id": 1
+  }
+}
 ```
 Example failure:
 ```json
-{ "message":"Access Token Not Found" }
+{ "message":"This user does not have any photos." }
 ```
 ### **Get All Photos From All Users**
 
@@ -397,19 +433,71 @@ Example success:
 [
   {
     "photo_info": {
+      "photo": 8,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 1
+    }
+  },
+  {
+    "photo_info": {
+      "photo": 7,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 1
+    }
+  },
+  {
+    "photo_info": {
+      "photo": 6,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 1
+    }
+  },
+  {
+    "photo_info": {
+      "photo": 5,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 2
+    }
+  },
+  {
+    "photo_info": {
+      "photo": 4,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 2
+    }
+  },
+  {
+    "photo_info": {
+      "photo": 3,
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 3
+    }
+  },
+  {
+    "photo_info": {
       "photo": 2,
-      "image_url": "www.google.com/image"
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 1
     }
   },
   {
     "photo_info": {
       "photo": 1,
-      "image_url": "www.google.com/image"
+      "image_url": "www.google.com/image",
+      "comic_id": null,
+      "user_id": 2
     }
   }
 ]
 ```
 Example failure:
 ```json
-{ "message":"Access Token Not Found" }
+{ "message":"No photos exist" }
 ```
