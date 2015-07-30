@@ -5,7 +5,7 @@ __ruby 2.1.5p273__
 Zero Issue is a fun app where the user can take an image of a person on their smart phone, and transform the way they look through a library of comic book themed assets.  The user can then go online and view all of their photos to create their own comic book strip.  
 We built this app in 48 hours for our Hack-A-Thon, and took 1st Place for having the most polished result in such a short period of time.  
 
-### **Return To Philip Wood's Website: https://philipcwood.wordpress.com**
+##### **Return To Philip Wood's Website: https://philipcwood.wordpress.com/home-page/project-showcase/zero-issue/**
 
 ### **Base URL: https://evening-escarpment-7913.herokuapp.com/**
 
